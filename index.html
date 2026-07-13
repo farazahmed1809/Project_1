@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA//SYS — Hardware Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#top" class="logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M4 12h4l2-7 4 14 2-7h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>NOVA<em>//</em>SYS</span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="#catalog">Catalog</a>
+      <a href="#specs">Spec Lab</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Switch to blueprint theme">
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">DARK</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">CATALOG REV. 04 — Q3 RELEASE</p>
+        <h1>Hardware,<br>opened up.</h1>
+        <p class="hero-sub">Every unit on this page ships with its own datasheet. No marketing gloss —
+          just the parts, the tolerances, and the numbers that decide whether it belongs in your bag.</p>
+        <div class="hero-actions">
+          <a href="#catalog" class="btn btn-primary">Browse catalog</a>
+          <a href="#specs" class="btn btn-ghost">Open spec lab</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>03</dt><dd>Active units</dd></div>
+          <div><dt>0.4mm</dt><dd>Tolerance spec</dd></div>
+          <div><dt>72h</dt><dd>Bench test cycle</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-diagram" aria-hidden="true">
+        <svg viewBox="0 0 420 420" class="schematic-hero">
+          <g class="pcb-grid">
+            <path d="M0 60H420 M0 150H420 M0 240H420 M0 330H420" />
+            <path d="M60 0V420 M150 0V420 M270 0V420 M360 0V420" />
+          </g>
+          <!-- earbud case body -->
+          <rect x="150" y="140" width="120" height="150" rx="26" class="s-body"/>
+          <circle cx="210" cy="175" r="10" class="s-detail"/>
+          <rect x="175" y="205" width="70" height="55" rx="10" class="s-detail-outline"/>
+          <!-- leader lines -->
+          <line x1="150" y1="150" x2="70" y2="90" class="leader"/>
+          <circle cx="70" cy="90" r="3" class="leader-dot"/>
+          <line x1="270" y1="160" x2="360" y2="70" class="leader"/>
+          <circle cx="360" cy="70" r="3" class="leader-dot"/>
+          <line x1="180" y1="290" x2="110" y2="360" class="leader"/>
+          <circle cx="110" cy="360" r="3" class="leader-dot"/>
+          <line x1="245" y1="290" x2="330" y2="350" class="leader"/>
+          <circle cx="330" cy="350" r="3" class="leader-dot"/>
+        </svg>
+        <span class="callout" style="top:16%; left:2%;">BATT — 30H</span>
+        <span class="callout" style="top:10%; right:2%;">BT 5.3</span>
+        <span class="callout" style="bottom:6%; left:6%;">IPX4</span>
+        <span class="callout" style="bottom:8%; right:2%;">ANC — 32dB</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATALOG ================= -->
+  <section class="catalog" id="catalog">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Unit catalog</h2>
+        <p>Filter by category or search a part name.</p>
+      </div>
+
+      <div class="catalog-controls">
+        <div class="search-field">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" id="searchInput" placeholder="Search units — e.g. speaker, watch, IPX4">
+        </div>
+        <div class="filter-chips" id="filterChips" role="group" aria-label="Filter by category">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="Audio">Audio</button>
+          <button class="chip" data-filter="Wearables">Wearables</button>
+          <button class="chip" data-filter="Home">Home</button>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid"><!-- injected by script.js --></div>
+      <p class="empty-state" id="emptyState" hidden>No units match that search. Try clearing a filter.</p>
+    </div>
+  </section>
+
+  <!-- ================= SPEC LAB / NEWSLETTER ================= -->
+  <section class="spec-lab" id="specs">
+    <div class="wrap spec-lab-inner">
+      <div>
+        <p class="eyebrow">SPEC LAB</p>
+        <h2>Get the next datasheet first.</h2>
+        <p class="hero-sub">Unit 04 clears bench testing next month. Leave a contact line and we'll send the full teardown before public release.</p>
+      </div>
+      <form id="notifyForm" class="notify-form" novalidate>
+        <label for="emailInput">Email address</label>
+        <div class="notify-row">
+          <input type="email" id="emailInput" placeholder="you@domain.com" required>
+          <button type="submit" class="btn btn-primary">Notify me</button>
+        </div>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= PRODUCT MODAL ================= -->
+<div class="modal-backdrop" id="productModalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="productModalClose" aria-label="Close">&times;</button>
+    <div id="productModalBody"><!-- injected --></div>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer" id="contact">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="logo"><em>//</em> NOVA//SYS</span>
+      <p>Assembled datasheets for hardware that ships. Class assignment build — no real inventory.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <h4>Catalog</h4>
+        <a href="#catalog">Audio</a>
+        <a href="#catalog">Wearables</a>
+        <a href="#catalog">Home</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#specs">Spec Lab</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 NOVA//SYS. For educational use.</span>
+    <span id="footerClock" class="mono"></span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
